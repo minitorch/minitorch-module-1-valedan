@@ -22,8 +22,17 @@ def central_difference(f: Any, *vals: Any, arg: int = 0, epsilon: float = 1e-6) 
     Returns:
         An approximation of $f'_i(x_0, \ldots, x_{n-1})$
     """
-    # TODO: Implement for Task 1.1.
-    raise NotImplementedError("Need to implement for Task 1.1")
+
+    def f_prime(f, x):
+        return (f(x + epsilon) - f(x - epsilon)) / (2 * epsilon)
+
+    def f_x(x):
+        args = list(vals)
+        args[arg] = x
+        return f(*args)
+
+    difference = f_prime(f_x, vals[arg])
+    return difference
 
 
 variable_count = 1

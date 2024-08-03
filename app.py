@@ -1,10 +1,10 @@
 from argparse import ArgumentParser
 
 import streamlit as st
-from interface.streamlit_utils import get_img_tag
-from interface.train import render_train_interface
-from math_interface import render_math_sandbox
-from run_torch import TorchTrain
+from project.interface.streamlit_utils import get_img_tag
+from project.interface.train import render_train_interface
+from project.math_interface import render_math_sandbox
+from project.run_torch import TorchTrain
 
 parser = ArgumentParser()
 parser.add_argument("module_num", type=int)
@@ -19,9 +19,7 @@ st.set_page_config(page_title="interactive minitorch")
 st.sidebar.markdown(
     """
 <h1 style="font-size:30pt; float: left; margin-right: 20px; margin-top: 1px;">MiniTorch</h1>{}
-""".format(
-        get_img_tag("https://minitorch.github.io/_images/match.png", width="40")
-    ),
+""".format(get_img_tag("https://minitorch.github.io/_images/match.png", width="40")),
     unsafe_allow_html=True,
 )
 
@@ -41,8 +39,8 @@ module_selection = st.sidebar.radio(
 PAGES = {}
 
 if module_selection == "Module 0":
-    from module_interface import render_module_sandbox
-    from run_manual import ManualTrain
+    from project.module_interface import render_module_sandbox
+    from project.run_manual import ManualTrain
 
     def render_run_manual_interface():
         st.header("Module 0 - Manual")
@@ -62,8 +60,8 @@ if module_selection == "Module 0":
     PAGES["Module 0: Manual"] = render_run_manual_interface
 
 if module_selection == "Module 1":
-    from run_scalar import ScalarTrain
-    from show_expression_interface import render_show_expression
+    from project.run_scalar import ScalarTrain
+    from project.show_expression_interface import render_show_expression
 
     def render_m1_sandbox():
         return render_math_sandbox(True)

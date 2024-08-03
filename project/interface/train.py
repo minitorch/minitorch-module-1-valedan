@@ -1,7 +1,7 @@
 import time
 
-import graph_builder
-import interface.plots as plots
+import project.graph_builder as graph_builder
+import project.interface.plots as plots
 import networkx as nx
 import pandas as pd
 import plotly.graph_objects as go

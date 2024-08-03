@@ -1,8 +1,8 @@
-import graph_builder
+import project.graph_builder as graph_builder
 import networkx as nx
 import plotly.graph_objects as go
 import streamlit as st
-from interface.streamlit_utils import render_function
+from project.interface.streamlit_utils import render_function
 
 import minitorch
 from minitorch import MathTest, MathTestVariable
@@ -65,7 +65,6 @@ def render_math_sandbox(use_scalar=False, use_tensor=False):
             st.graphviz_chart(nx.nx_pydot.to_pydot(G).to_string())
 
     if f_type == "Two Arg":
-
         st.write("### " + name)
         render_function(scalar)
         st.write("Function f(x, y)")

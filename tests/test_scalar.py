@@ -78,7 +78,11 @@ def test_one_args(
     fn: Tuple[str, Callable[[float], float], Callable[[Scalar], Scalar]], t1: Scalar
 ) -> None:
     name, base_fn, scalar_fn = fn
-    assert_close(scalar_fn(t1).data, base_fn(t1.data))
+    print(name, t1.data)
+    print(base_fn, scalar_fn)
+    scalar = scalar_fn(t1).data
+    base = base_fn(t1.data)
+    assert_close(scalar, base)
 
 
 @given(small_scalars, small_scalars)

@@ -108,6 +108,7 @@ def test_module(size_a: int, size_b: int) -> None:
 
     module = Module2(size_a)
     named_parameters = dict(module.named_parameters())
+
     assert named_parameters["parameter_a"].value == VAL_A
     assert named_parameters["parameter_b"].value == VAL_B
     assert named_parameters["extra_parameter_0"].value == 0
@@ -130,6 +131,7 @@ def test_stacked_module(size_a: int, size_b: int, val: float) -> None:
     assert len(module.parameters()) == 1 + (size_a + 3) + (size_b + 3)
 
     named_parameters = dict(module.named_parameters())
+
     assert named_parameters["parameter_a"].value == val
     assert named_parameters["module_a.parameter_a"].value == VAL_A
     assert named_parameters["module_a.parameter_b"].value == VAL_B
